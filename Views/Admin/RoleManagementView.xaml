@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="QL_quanCafe.Views.Admin.RoleManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#FDFBF7">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề và nút Quay lại -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Click="BtnBack_Click" Content="🡨 Quay lại" Background="Transparent" BorderThickness="0" Foreground="#5D4037" FontWeight="Bold" FontSize="16" Cursor="Hand" Margin="0,0,20,0"/>
+            <TextBlock Text="🛡 PHÂN QUYỀN TÀI KHOẢN" FontSize="24" FontWeight="Bold" Foreground="#5D4037" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Khung Nội dung chia làm 2 cột -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <!-- Cột trái chứa bảng -->
+                <ColumnDefinition Width="1.2*"/>
+                <!-- Cột phải chứa form sửa quyền -->
+            </Grid.ColumnDefinitions>
+
+            <!-- CỘT TRÁI: BẢNG DANH SÁCH TÀI KHOẢN -->
+            <DataGrid x:Name="DgRoles" Grid.Column="0" AutoGenerateColumns="False" IsReadOnly="True" 
+                      HeadersVisibility="Column" Background="White" RowHeight="40" Margin="0,0,20,0"
+                      SelectionChanged="DgRoles_SelectionChanged" Cursor="Hand">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã NV" Binding="{Binding Id}" Width="70"/>
+                    <DataGridTextColumn Header="Tên Đăng Nhập" Binding="{Binding UserName}" Width="1.5*"/>
+                    <DataGridTextColumn Header="Họ và Tên" Binding="{Binding FullName}" Width="2*"/>
+                    <DataGridTextColumn Header="Chức Vụ Hiện Tại" Binding="{Binding Role}" Width="1.5*">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="#D84315"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- CỘT PHẢI: FORM CẬP NHẬT QUYỀN -->
+            <Border Grid.Column="1" Background="White" CornerRadius="12" BorderBrush="#D7CCC8" BorderThickness="1" Padding="25" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="⚙ THAY ĐỔI CHỨC VỤ" FontSize="18" FontWeight="Bold" Foreground="#4E342E" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Nhân viên đang chọn:" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBlock x:Name="TxtSelectedEmployee" Text="(Chưa chọn nhân viên nào)" FontSize="16" FontWeight="Bold" Foreground="#2E7D32" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Chọn chức vụ mới:" FontWeight="Bold" Foreground="#4E342E" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="CmbNewRole" Height="40" FontSize="15" BorderBrush="#BCAAA4" Padding="10,5" Margin="0,0,0,25">
+                        <ComboBoxItem Content="Admin"/>
+                        <ComboBoxItem Content="Nhân viên"/>
+                    </ComboBox>
+
+                    <!-- Nút Lưu -->
+                    <Button Click="BtnSaveRole_Click" Content="Cập nhật quyền" Height="45" Background="#FF5FB018" Foreground="White" FontWeight="Bold" FontSize="16" Cursor="Hand">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

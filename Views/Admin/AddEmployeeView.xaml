@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="QL_quanCafe.Views.Admin.AddEmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Tiêu đề & Nút Quay lại -->
+            <RowDefinition Height="*"/>
+            <!-- Form nhập liệu -->
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Nút Quay lại -->
+            <Button Grid.Column="0" Click="BtnBack_Click" Background="Transparent" BorderThickness="0" Cursor="Hand" Margin="0,0,20,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" FontSize="20" Foreground="#8D6E63" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBlock Text="Quay lại" FontSize="16" Foreground="#8D6E63" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                </StackPanel>
+            </Button>
+
+            <TextBlock Grid.Column="1" Text="THÊM NHÂN VIÊN MỚI" FontSize="24" FontWeight="Bold" Foreground="#FF8C6C66" VerticalAlignment="Center"/>
+        </Grid>
+
+        <!-- FORM NHẬP LIỆU (Đã căn giữa ngang, kéo rộng 750px và chia 2 cột) -->
+        <Border Grid.Row="1" Background="White" CornerRadius="12" Padding="40" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" Width="750" Height="553">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Color="Black" Opacity="0.05" ShadowDepth="2"/>
+            </Border.Effect>
+
+            <!-- KHUNG GRID CHIA 2 CỘT CÂN BẰNG -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- DÒNG 1 -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,15">
+                    <TextBlock Text="Tên đăng nhập (*):" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtUsername" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,0,15">
+                    <TextBlock Text="Họ và tên (*):" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtFullName" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- DÒNG 2 -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,15">
+                    <TextBlock Text="Mật khẩu tạm thời (*):" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtPassword" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,0,15">
+                    <TextBlock Text="Ngày sinh:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <!-- Dùng DatePicker để chọn ngày lịch sự -->
+                    <DatePicker x:Name="dpNgaySinh" Height="40" Padding="5" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- DÒNG 3 -->
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,0,15">
+                    <TextBlock Text="Email liên hệ:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtEmail" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="2" Margin="0,0,0,15">
+                    <TextBlock Text="Số điện thoại:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtPhone" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- DÒNG 4 -->
+                <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,0,0,15">
+                    <TextBlock Text="Vai trò (Quyền):" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbRole" Height="40" Padding="10,5" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1" SelectedIndex="0">
+                        <ComboBoxItem Content="Nhân viên"/>
+                        <ComboBoxItem Content="Quản lý"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="2" Margin="0,0,0,15">
+                    <TextBlock Text="Giới tính:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbGender" Height="40" Padding="10,5" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1" SelectedIndex="0">
+                        <ComboBoxItem Content="Nam"/>
+                        <ComboBoxItem Content="Nữ"/>
+                        <ComboBoxItem Content="Khác"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- DÒNG 5 -->
+                <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,0,0,25">
+                    <TextBlock Text="Trình độ học vấn:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbEducation" Height="40" Padding="10,5" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1" SelectedIndex="0">
+                        <ComboBoxItem Content="THPT"/>
+                        <ComboBoxItem Content="Trung cấp / Cao đẳng"/>
+                        <ComboBoxItem Content="Đại học"/>
+                        <ComboBoxItem Content="Khác"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Grid.Column="2" Margin="0,0,0,25">
+                    <TextBlock Text="Quê quán / Địa chỉ:" Foreground="#5D4037" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtAddress" Height="40" Padding="10,0" VerticalContentAlignment="Center" BorderBrush="#D7CCC8" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- DÒNG 6: Nút Lưu -->
+                <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Content="LƯU THÔNG TIN NHÂN VIÊN" Click="BtnSave_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold" FontSize="14" Cursor="Hand" BorderThickness="0" Margin="0,0,0,-38">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

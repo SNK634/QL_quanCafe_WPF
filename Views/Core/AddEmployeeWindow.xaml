@@ -1,0 +1,35 @@
+﻿<Window x:Class="QL_quanCafe.Views.Admin.AddEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thêm Nhân Viên Mới" Height="450" Width="350" WindowStartupLocation="CenterScreen">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="THÊM TÀI KHOẢN NHÂN VIÊN" FontSize="18" FontWeight="Bold" 
+                   Foreground="#5D4037" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Tên đăng nhập -->
+        <TextBlock Text="Tên đăng nhập:" Margin="0,5,0,0" FontSize="14"/>
+        <TextBox x:Name="txtUserName" Margin="0,5,0,10" Height="30" Padding="5"/>
+
+        <!-- Email -->
+        <TextBlock Text="Email:" Margin="0,5,0,0" FontSize="14"/>
+        <TextBox x:Name="txtEmail" Margin="0,5,0,10" Height="30" Padding="5"/>
+
+        <!-- Phân quyền -->
+        <TextBlock Text="Vai trò (Quyền):" Margin="0,5,0,0" FontSize="14"/>
+        <ComboBox x:Name="cmbRole" Margin="0,5,0,10" Height="30">
+            <ComboBoxItem Content="Nhân viên" IsSelected="True"/>
+            <ComboBoxItem Content="Admin"/>
+        </ComboBox>
+
+        <!-- Mật khẩu -->
+        <TextBlock Text="Mật khẩu tạm thời:" Margin="0,5,0,0" FontSize="14"/>
+        <PasswordBox x:Name="txtPassword" Margin="0,5,0,5" Height="30" Padding="5"/>
+        <TextBlock Text="*Ít nhất 6 ký tự, gồm 1 chữ hoa, 1 số, 1 ký tự đặc biệt" 
+                   FontSize="13" Foreground="Gray" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+        <!-- Nút Xác nhận -->
+        <Button Content="TẠO TÀI KHOẢN" Click="AddEmployee_Click" 
+                Background="#5D4037" Foreground="White" Height="40" FontWeight="Bold" Cursor="Hand"/>
+    </StackPanel>
+</Window>

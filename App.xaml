@@ -1,9 +1,10 @@
-﻿<Application x:Class="QL_quanCafe.App"
+<Application x:Class="QL_quanCafe.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QL_quanCafe"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/Core/LoginWindow.xaml">
+    <!--MainWindow--> <!--Views/Core/LoginWindow.xaml-->
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>

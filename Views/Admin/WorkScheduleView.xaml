@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="QL_quanCafe.Views.Admin.WorkScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Background="#FDFBF7">
+
+    <UserControl.Resources>
+        <!-- Khai báo danh sách các Ca làm việc để thả xuống trong bảng -->
+        <x:Array x:Key="ShiftList" Type="sys:String">
+            <sys:String>Nghỉ</sys:String>
+            <sys:String>Ca Sáng</sys:String>
+            <sys:String>Ca Chiều</sys:String>
+            <sys:String>Ca Tối</sys:String>
+        </x:Array>
+    </UserControl.Resources>
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- HÀNG 1: Tiêu đề và nút Quay lại -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Click="BtnBack_Click" Content="🡨 Quay lại" Background="Transparent" BorderThickness="0" Foreground="#5D4037" FontWeight="Bold" FontSize="16" Cursor="Hand" Margin="0,0,20,0"/>
+            <TextBlock Text="📅 XẾP LỊCH LÀM VIỆC THEO TUẦN" FontSize="24" FontWeight="Bold" Foreground="#5D4037" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- HÀNG 2: Bộ lọc chọn tuần -->
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,15" BorderBrush="#D7CCC8" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Chọn tuần áp dụng:" FontWeight="Bold" Foreground="#4E342E" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <DatePicker x:Name="DpWeekStart" Width="150" Height="30" SelectedDateChanged="DpWeekStart_SelectedDateChanged"/>
+                <TextBlock Text="đến" Margin="15,0" VerticalAlignment="Center" Foreground="Gray"/>
+                <DatePicker x:Name="DpWeekEnd" Width="150" Height="30" IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+
+        <!-- HÀNG 3: Bảng xếp lịch -->
+        <DataGrid x:Name="DgSchedule" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" 
+                  HeadersVisibility="Column" Background="White" RowHeight="45" BorderBrush="#D7CCC8" BorderThickness="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã NV" Binding="{Binding EmpId}" IsReadOnly="True" Width="70"/>
+                <DataGridTextColumn Header="Tên Nhân Viên" Binding="{Binding EmpName}" IsReadOnly="True" Width="1.5*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Các cột chọn ca làm việc -->
+                <DataGridComboBoxColumn Header="Thứ 2" SelectedItemBinding="{Binding Mon}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Thứ 3" SelectedItemBinding="{Binding Tue}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Thứ 4" SelectedItemBinding="{Binding Wed}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Thứ 5" SelectedItemBinding="{Binding Thu}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Thứ 6" SelectedItemBinding="{Binding Fri}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Thứ 7" SelectedItemBinding="{Binding Sat}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+                <DataGridComboBoxColumn Header="Chủ Nhật" SelectedItemBinding="{Binding Sun}" ItemsSource="{StaticResource ShiftList}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- HÀNG 4: Nút Lưu -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Click="BtnSaveSchedule_Click" Content="💾 Lưu Lịch Làm Việc" Width="200" Height="45" Background="#2E7D32" Foreground="White" FontWeight="Bold" FontSize="16" Cursor="Hand">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

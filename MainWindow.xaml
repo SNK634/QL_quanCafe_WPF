@@ -3,10 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QL_quanCafe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Phần mềm Quản lý Quán Cà phê" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- MENU BÊN TRÁI -->
+        <Border Grid.Column="0" Background="#4A2E1B">
+            <StackPanel Margin="10">
+                <!-- Logo -->
+                <Image Source="pack://application:,,,/Images/image_d69ce4.png" Height="81" Width="82" Margin="0,30,0,40" Stretch="Uniform"/>
+
+                <!-- CÁC NÚT MENU  -->
+                <Button Content="BÁN HÀNG (POS)" Click="btnBanHang_Click" Height="50" Background="Transparent" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="BtnMenu" Content="QUẢN LÝ THỰC ĐƠN" Click="btnQuanLyThucDon_Click" Height="50" Background="Transparent" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="BtnEmployee" Content="QUẢN LÝ NHÂN VIÊN" Click="BtnNavEmployee_Click" Height="50" Background="Transparent" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="BtnReport" Content="BÁO CÁO THỐNG KÊ" Click="btnBaoCaoThongKe_Click"  Height="50" Background="Transparent"  Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                <!-- THÊM NÚT ĐĂNG XUẤT Ở DƯỚI CÙNG -->
+                <Button Content="🚪 ĐĂNG XUẤT" Click="Logout_Click" Height="50" Background="#3E2723" Foreground="#FFCC80" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Margin="0,40,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- KHUNG HIỂN THỊ NỘI DUNG BÊN PHẢI -->
+        <ContentControl x:Name="MainContent" Grid.Column="1"/>
     </Grid>
 </Window>
